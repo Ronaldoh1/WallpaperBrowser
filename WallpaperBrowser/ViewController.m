@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "PaperViewController.h"
 
+
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *sliderLabel;
 @property (weak, nonatomic) IBOutlet UISlider *slider;
@@ -21,6 +22,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -28,6 +31,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 - (IBAction)sliderValueChanged:(id)sender {
   self.sliderLabel.text = [NSString stringWithFormat:@"%d", (int)self.slider.value];
 }
@@ -36,7 +41,8 @@
   //[self performSegueWithIdentifier:@"GoToPaper" sender:self];
   PaperViewController *paperViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PaperViewController"];
   paperViewController.monthToShow = self.sliderLabel.text.intValue;
-  [self presentViewController:paperViewController animated:YES completion:nil];
+    [self.navigationController pushViewController:paperViewController animated:YES];
+  //[self presentViewController:paperViewController animated:YES completion:nil];
 }
 
 - (IBAction)close:(UIStoryboardSegue *)segue {
