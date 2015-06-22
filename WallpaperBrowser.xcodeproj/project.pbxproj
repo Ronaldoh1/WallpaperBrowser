@@ -236,6 +236,7 @@
 		F23436B91B38507F0065D11C /* wooden-box-7.png in Resources */ = {isa = PBXBuildFile; fileRef = F23435F01B38507F0065D11C /* wooden-box-7.png */; };
 		F23436BA1B38507F0065D11C /* write-simple-7.png in Resources */ = {isa = PBXBuildFile; fileRef = F23435F11B38507F0065D11C /* write-simple-7.png */; };
 		F23436BC1B38581D0065D11C /* toughMudder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F23436BB1B38581D0065D11C /* toughMudder.jpg */; };
+		F23436BF1B386F2F0065D11C /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F23436BE1B386F2F0065D11C /* ContainerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -484,6 +485,9 @@
 		F23435F01B38507F0065D11C /* wooden-box-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wooden-box-7.png"; sourceTree = "<group>"; };
 		F23435F11B38507F0065D11C /* write-simple-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "write-simple-7.png"; sourceTree = "<group>"; };
 		F23436BB1B38581D0065D11C /* toughMudder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = toughMudder.jpg; sourceTree = "<group>"; };
+		F23436BD1B386F2F0065D11C /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
+		F23436BE1B386F2F0065D11C /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
+		F23436C01B3885E50065D11C /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -548,6 +552,8 @@
 				35DA0EAB1899743D007FE8E2 /* AppDelegate.h */,
 				35DA0EAC1899743D007FE8E2 /* AppDelegate.m */,
 				35DA0EAE1899743D007FE8E2 /* Main.storyboard */,
+				F23436BD1B386F2F0065D11C /* ContainerViewController.h */,
+				F23436BE1B386F2F0065D11C /* ContainerViewController.m */,
 				35DA0EB11899743D007FE8E2 /* ViewController.h */,
 				35DA0EB21899743D007FE8E2 /* ViewController.m */,
 				F23436BB1B38581D0065D11C /* toughMudder.jpg */,
@@ -591,6 +597,7 @@
 		35DA0ED118997447007FE8E2 /* Art */ = {
 			isa = PBXGroup;
 			children = (
+				F23436C01B3885E50065D11C /* Reveal.framework */,
 				35DA0ED218997447007FE8E2 /* 01.jpg */,
 				35DA0ED318997447007FE8E2 /* 02.jpg */,
 				35DA0ED418997447007FE8E2 /* 03.jpg */,
@@ -1139,6 +1146,7 @@
 				35DA0EAD1899743D007FE8E2 /* AppDelegate.m in Sources */,
 				35DA0EA91899743D007FE8E2 /* main.m in Sources */,
 				35DA0EEC18997785007FE8E2 /* PaperViewController.m in Sources */,
+				F23436BF1B386F2F0065D11C /* ContainerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1263,9 +1271,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WallpaperBrowser/Art",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WallpaperBrowser/WallpaperBrowser-Prefix.pch";
 				INFOPLIST_FILE = "WallpaperBrowser/WallpaperBrowser-Info.plist";
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-ObjC",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1276,6 +1293,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WallpaperBrowser/Art",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WallpaperBrowser/WallpaperBrowser-Prefix.pch";
 				INFOPLIST_FILE = "WallpaperBrowser/WallpaperBrowser-Info.plist";

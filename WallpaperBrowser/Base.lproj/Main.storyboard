@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Wallpaper-->
@@ -61,7 +62,7 @@
         <!--Happy-->
         <scene sceneID="aXw-Ue-jAD">
             <objects>
-                <viewController id="gWV-Wn-IuZ" sceneMemberID="viewController">
+                <viewController id="gWV-Wn-IuZ" customClass="ContainerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hxe-QM-hV6"/>
                         <viewControllerLayoutGuide type="bottom" id="hKA-1H-hCx"/>
@@ -70,17 +71,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="toughMudder.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="geI-6i-l8w">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="toughMudder.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="geI-6i-l8w">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="269"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="269" id="Sni-c5-WId"/>
+                                </constraints>
                             </imageView>
+                            <containerView opaque="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="2Zp-At-ktf">
+                                <rect key="frame" x="0.0" y="269" width="320" height="250"/>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="geI-6i-l8w" firstAttribute="leading" secondItem="33d-me-eqs" secondAttribute="leadingMargin" constant="-16" id="2zZ-ZC-oQG"/>
+                            <constraint firstItem="2Zp-At-ktf" firstAttribute="leading" secondItem="33d-me-eqs" secondAttribute="leadingMargin" constant="-16" id="6f5-m7-R65"/>
+                            <constraint firstItem="2Zp-At-ktf" firstAttribute="top" secondItem="geI-6i-l8w" secondAttribute="bottom" id="PLT-3p-9Dh"/>
+                            <constraint firstItem="geI-6i-l8w" firstAttribute="top" secondItem="33d-me-eqs" secondAttribute="topMargin" id="esc-1f-HNx"/>
+                            <constraint firstItem="hKA-1H-hCx" firstAttribute="top" secondItem="2Zp-At-ktf" secondAttribute="bottom" id="jeR-qb-9Lp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2Zp-At-ktf" secondAttribute="trailing" constant="-16" id="kZj-gW-Xzs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="geI-6i-l8w" secondAttribute="trailing" constant="-16" id="sWs-RG-RyI"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Happy" image="paper-piece-minus-7.png" selectedImage="file-tick-7.png" id="eGu-ht-GEp"/>
+                    <connections>
+                        <outlet property="container" destination="2Zp-At-ktf" id="4rB-SQ-Qwj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dgg-YQ-7rH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1316" y="645"/>
+            <point key="canvasLocation" x="1128" y="670"/>
         </scene>
         <!--Paper View Controller-->
         <scene sceneID="U43-ZL-lEq">
@@ -94,11 +113,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="01.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="KXR-pz-b5t">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MKi-NL-ogo">
-                                <rect key="frame" x="254" y="529" width="40" height="30"/>
+                                <rect key="frame" x="264" y="471" width="40" height="30"/>
                                 <state key="normal" title="Close">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -106,11 +122,18 @@
                                     <segue destination="cLW-TP-E3T" kind="unwind" unwindAction="close:" id="1Ft-9u-fH4"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="01.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="KXR-pz-b5t">
+                                <rect key="frame" x="-11" y="-175" width="331" height="886"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="MKi-NL-ogo" secondAttribute="trailing" constant="26" id="h9H-7Z-xp8"/>
-                            <constraint firstItem="ZvU-4L-gtm" firstAttribute="top" secondItem="MKi-NL-ogo" secondAttribute="bottom" constant="9" id="wCb-RY-4lK"/>
+                            <constraint firstItem="KXR-pz-b5t" firstAttribute="leading" secondItem="9oC-dk-Nk1" secondAttribute="leadingMargin" constant="-27" id="Ew0-jj-jgx"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="KXR-pz-b5t" secondAttribute="bottom" constant="-143" id="NaW-TD-jTo"/>
+                            <constraint firstAttribute="trailing" secondItem="MKi-NL-ogo" secondAttribute="trailing" constant="16" id="h9H-7Z-xp8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KXR-pz-b5t" secondAttribute="trailing" constant="-16" id="hig-Il-f85"/>
+                            <constraint firstItem="ZvU-4L-gtm" firstAttribute="top" secondItem="MKi-NL-ogo" secondAttribute="bottom" constant="18" id="wCb-RY-4lK"/>
+                            <constraint firstItem="KXR-pz-b5t" firstAttribute="top" secondItem="9oC-dk-Nk1" secondAttribute="topMargin" constant="-175" id="wYt-0b-xb8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="IXw-RJ-V48"/>
@@ -121,7 +144,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g7l-zP-Uos" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="cLW-TP-E3T" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1491" y="22"/>
+            <point key="canvasLocation" x="1509" y="346"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TE9-fs-bRr">
